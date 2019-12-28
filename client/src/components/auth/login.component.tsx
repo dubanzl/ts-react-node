@@ -21,6 +21,7 @@ class Login extends Component<Props, State> {
 
 		return (
 			<div className="login">
+				<Icon name="tasks" size="huge" circular inverted color="blue" />
 				<div className="login-box">
 					<Form size="large">
 						<Form.Input
