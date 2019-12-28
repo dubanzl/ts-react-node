@@ -12,7 +12,7 @@ class IndexRoutes {
 
 	config(): void{
 		this.router.get('/getTasks', this.IndexController.getTasks);
-		this.router.get('/registerTask', this.IndexController.registerTask);
+		this.router.post('/registerTask', this.IndexController.registerTask);
 		this.router.get('/updateTask', this.IndexController.updateTask);
 		this.router.get('/removeTask', this.IndexController.removeTask);
 	}

@@ -1,0 +1,47 @@
+@import './index.less';
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background: rgb(251,250,255);
+  background: linear-gradient(180deg, rgba(251,250,255,1) 30%, rgb(32, 32, 223) 30%);
+
+  .dashboard-brand {
+    position: fixed;
+    top: 30px;
+    font-size: 38px;
+    font-weight: bold;
+  }
+
+  .dashboard-action-bar {
+    position: fixed;
+    top: 80px;
+    right: 190px;
+  }
+
+  .dashboard-box {
+    position: fixed;
+    overflow: scroll;
+    overflow-x: hidden;
+    top: 130px;
+    padding: 0 !important;
+		background-color: #ffffff;
+    max-width: 1000px;
+    min-height: 70%;
+    height: calc(100% - 200px);
+    border-top: none;
+    box-shadow: 4px 15px 15px rgba(3, 27, 78, 0.1);
+    border-radius: 7px;
+
+    .dashboard-header {
+      height: 50px;
+      width: 100%;
+      border-bottom: 2px solid rgba(168, 166, 166, 0.205);
+    }
+
+    .dashboard-content {
+      margin: 20px;
+    }
+  }
+}

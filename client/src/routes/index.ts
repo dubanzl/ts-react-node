@@ -1,5 +1,6 @@
 import { matchRoutes } from './match.routes';
 import { authRoutes } from './auth.routes';
+import { dashboardRoutes } from './dashboard.routes';
 import Home from '../components/home.component';
 
 const homeRoute: any = 	{
@@ -10,6 +11,7 @@ const homeRoute: any = 	{
 
 
 const routes: any = [].concat(
+	dashboardRoutes,
 	authRoutes,
 	homeRoute,
 	matchRoutes,
