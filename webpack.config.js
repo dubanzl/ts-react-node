@@ -28,7 +28,11 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			publicPath: `${__dirname}/build/client/public/index.html`,
-			title: 'app',
+			title: 'test',
+			meta: {
+				description: 'test',
+				viewport: 'width=device-width,initial-scale=1,initial-scale=1.0, minimum-scale=1.0, user-scalable=no',
+			},
 			minify: {
 				collapseWhitespace: true,
 			},
