@@ -1,11 +1,10 @@
-import express, { Application } from 'express';
+import express, { Application } from 'express';	// eslint-disable-line no-unused-vars
 import config from 'config';
 import morgan from 'morgan';
 import cors from 'cors';
 import cons from 'consolidate';
 import indexRoutes from './routes/index.route';
 import authRoutes from './routes/auth.route';
-
 import * as uni from './app';
 
 class Server {
@@ -33,7 +32,7 @@ class Server {
 
 	routes(): void {
 		this.app.use('/api/index', indexRoutes);
-		this.app.use('/api/auth',authRoutes);
+		this.app.use('/api/auth', authRoutes);
 		this.app.get('*', (uni.handleRender));
 	}
 
