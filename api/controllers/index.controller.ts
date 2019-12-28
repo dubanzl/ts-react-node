@@ -11,11 +11,12 @@ class IndexController {
 	public async registerTask(req: Request, res: Response) {
 		const { task } = req.body;
 
+		console.log(task);
 		const data = {
 			name: task.name,
 			priority: task.priority,
 			description: task.description,
-			expirationDate: new Date(task.Expirationdate),
+			expirationDate: new Date(task.expirationDate),
 			userId: new ObjectId(task.userId),
 		};
 		const result = await TaskModel.registerTask(data);

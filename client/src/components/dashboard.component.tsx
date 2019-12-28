@@ -81,17 +81,10 @@ class Dashboard extends Component<Props, State> {
 												{ key: 'very low', text: 'Muy Baja', value: 'very low' },
 											]}
 										/>
-
 										<Form.Input
 											label="Fecha de vencimiento"
 											fluid
-											type="date"
-											onChange={(event) => this.setState({ expiration_date: event.target.value })}
-										/>
-										<Form.Input
-											label="Hora de vencimiento"
-											fluid
-											type="time"
+											type="datetime-local"
 											onChange={(event) => this.setState({ expiration_time: event.target.value })}
 										/>
 									</Form.Group>
