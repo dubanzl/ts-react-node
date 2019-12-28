@@ -11,12 +11,12 @@ interface State {
 	name: string;
 	description: string;
 	priority: string;
-	expiration_date: string;
-	expiration_time: string;
+	expirationDate: string;
 	open: boolean;
 	tasks: {
 		_id: string;
 		name: string;
+		status: string;
 		priority: string;
 		description: string;
 		expirationDate: string;
@@ -32,8 +32,7 @@ class Dashboard extends Component<Props, State> {
 			name: '',
 			description: '',
 			priority: '',
-			expiration_date: '',
-			expiration_time: '',
+			expirationDate: '',
 			open: false,
 			tasks: [],
 		};
@@ -48,9 +47,9 @@ class Dashboard extends Component<Props, State> {
 	async addTask() {
 		const { tasks } = this.state;
 		this.setState({ open: false });
-		const { name, description, priority, expiration_date, expiration_time } = this.state;
-		console.log(name, description, priority, expiration_date, expiration_time);
-		const response = await api.tasksApi.addTask({ name, description, priority, expiration_date, expiration_time, userId: '5e06bf2299ec426f3a3ef353' });
+		const { name, description, priority, expirationDate } = this.state;
+		console.log(name, description, priority, expirationDate);
+		const response = await api.tasksApi.addTask({ name, description, priority, expirationDate, userId: '5e06bf2299ec426f3a3ef353' });
 		console.log(response);
 		tasks.push(response);
 		this.setState({ tasks });
@@ -125,7 +124,7 @@ class Dashboard extends Component<Props, State> {
 											label="Fecha de vencimiento"
 											fluid
 											type="datetime-local"
-											onChange={(event) => this.setState({ expiration_time: event.target.value })}
+											onChange={(event) => this.setState({ expirationDate: event.target.value })}
 										/>
 									</Form.Group>
 								</Form>
@@ -171,16 +170,10 @@ class Dashboard extends Component<Props, State> {
 											</div>
 											<div className="task-content">
 												<div className="tasks-tags">
-													<Label color="green">
-														Compleada
+													<Label color={task.priority === 'Pendiente' ? 'grey' : task.priority === 'Finalizada' ? 'green' : 'red'}>
+														{ task.status }
 													</Label>
-													<Label color="red">
-														Vencida
-													</Label>
-													<Label color="grey">
-														Pendiente
-													</Label>
-													<Label color="red">
+													<Label color="blue">
 														Prioridad { task.priority }
 													</Label>
 												</div>
