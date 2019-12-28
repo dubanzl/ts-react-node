@@ -2,9 +2,9 @@ import { ObjectId } from 'mongodb'; // eslint-disable-line no-unused-vars
 import db from '../database/db.conn';
 
 class TaskModel {
-	public static async getTasks(userId) {
+	public static async getTasks(userId: string) {
 		try {
-			return await db.then((conn) => conn.collection('tasks').find({ userId }).toArray());
+			return await db.then((conn) => conn.collection('tasks').find({ userId: new ObjectId(userId) }).toArray());
 		} catch (err) {
 			throw err;
 		}
