@@ -10,7 +10,7 @@ export async function addTask(task): Promise<any> {
 
 export async function getTasksByUserId(userId): Promise<any> {
 	return request({
-		url: 'index/getTasks',
-		body: { userId },
+		url: `index/getTasks/${userId}`,
+		method: 'GET',
 	});
 }
