@@ -4,7 +4,7 @@ import TaskModel from '../models/task.model';
 
 class IndexController {
 	public async getTasks(req: Request, res: Response) {
-		const task: any = await TaskModel.getTasks(req.body.userId);
+		const task: any = await TaskModel.getTasks(req.params.userId);
 		res.json(task);
 	}
 
