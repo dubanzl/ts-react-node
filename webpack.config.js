@@ -27,14 +27,13 @@ module.exports = {
 			filename: 'app.css',
 		}),
 		new HtmlWebpackPlugin({
-			publicPath: `${__dirname}/build/client/public/index.html`,
 			title: 'test',
 			meta: {
 				description: 'test',
 				viewport: 'width=device-width,initial-scale=1,initial-scale=1.0, minimum-scale=1.0, user-scalable=no',
 			},
 			minify: {
-				collapseWhitespace: true,
+				collapseWhitespace: false,
 			},
 		}),
 		new BaseHrefWebpackPlugin({ baseHref: '/' }),
