@@ -8,6 +8,21 @@ class TaskModel {
 			throw err;
 		}
 	}
+
+	public static async registerTask(task: {name: string, priority: string, Expirationdate: Date}) {
+		try {
+			return new Promise((resolve : Function) => {
+				db.then((conn) => conn.collection('tasks').insertOne(task, (err, doc): void => {
+					if (err) {
+						throw err;
+					}
+					resolve(doc.ops[0]);
+				}));
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
 }
 
 export default TaskModel;
