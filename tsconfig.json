@@ -13,7 +13,7 @@
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "types" : ["node", "jest"],
+    "types" : ["node"],
     "esModuleInterop": true,
     "resolveJsonModule": true
   },

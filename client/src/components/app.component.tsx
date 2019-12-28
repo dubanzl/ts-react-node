@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {  } from '../api/index.api';
+import { getTasks } from '../api/index.api';
 
-class App extends Component<{}, State> {
+class App extends Component<{}, {}> {
 
 	constructor(props) {
 		super(props);
