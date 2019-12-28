@@ -11,7 +11,7 @@ class TaskModel {
 	}
 
 	public static async registerTask(task: {
-		name: string, priority: string, expirationdate: Date, userId: ObjectId
+		name: string, priority: string, description: string, expirationDate: Date, userId: ObjectId,
 	}) {
 		try {
 			return new Promise((resolve : Function) => {
@@ -28,10 +28,10 @@ class TaskModel {
 	}
 
 	public static async updateTask(
-		_id: ObjectId, name: string, priority: string, expirationdate: Date,
+		_id: ObjectId, name: string, priority: string, expirationDate: Date, description: string,
 	) {
 		try {
-			return await db.then((conn) => conn.collection('tasks').updateOne({ _id: new ObjectId(_id) }, { $set: { name, priority, expirationdate } }));
+			return await db.then((conn) => conn.collection('tasks').updateOne({ _id: new ObjectId(_id) }, { $set: { name, priority, expirationDate, description } }));
 		} catch (err) {
 			throw err;
 		}

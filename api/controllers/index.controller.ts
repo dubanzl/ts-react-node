@@ -14,7 +14,8 @@ class IndexController {
 		const data = {
 			name: task.name,
 			priority: task.priority,
-			expirationdate: new Date(task.Expirationdate),
+			description: task.description,
+			expirationDate: new Date(task.Expirationdate),
 			userId: new ObjectId(task.userId),
 		};
 		const result = await TaskModel.registerTask(data);
@@ -22,8 +23,8 @@ class IndexController {
 	}
 
 	public async updateTask(req: Request, res: Response) {
-		const {	_id, name, priority, expirationdate } = req.body;
-		const result = await TaskModel.updateTask(_id, name, priority, expirationdate);
+		const {	_id, name, priority, expirationDate, description } = req.body;
+		const result = await TaskModel.updateTask(_id, name, priority, expirationDate, description);
 		res.json(result);
 	}
 
