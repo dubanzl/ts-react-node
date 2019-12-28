@@ -17,6 +17,7 @@ class IndexController {
 			priority: task.priority,
 			description: task.description,
 			expirationDate: new Date(task.expirationDate),
+			status: 'Pediente',
 			userId: new ObjectId(task.userId),
 		};
 		const result = await TaskModel.registerTask(data);
