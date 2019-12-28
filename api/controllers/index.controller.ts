@@ -10,16 +10,16 @@ class IndexController {
 
 	public async registerTask(req: Request, res: Response) {
 		const { task } = req.body;
-
 		console.log(task);
 		const data = {
 			name: task.name,
 			priority: task.priority,
 			description: task.description,
 			expirationDate: new Date(task.expirationDate),
-			status: 'Pediente',
+			status: 'Pendiente',
 			userId: new ObjectId(task.userId),
 		};
+		console.log(data);
 		const result = await TaskModel.registerTask(data);
 		res.json(result);
 	}
