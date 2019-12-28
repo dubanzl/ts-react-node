@@ -15,6 +15,8 @@ class IndexRoutes {
 		this.router.post('/registerTask', this.IndexController.registerTask);
 		this.router.post('/updateTask', this.IndexController.updateTask);
 		this.router.post('/removeTask', this.IndexController.removeTask);
+		this.router.post('/updateStatusTask', this.IndexController.updateStatusTask);
+
 	}
 }
 
