@@ -37,6 +37,13 @@ class TaskModel {
 		}
 	}
 
+	public static async updateStatusTask(_id: ObjectId, status: string) {
+		try {
+			return await db.then((conn) => conn.collection('tasks').updateOne({ _id: new ObjectId(_id) }, { $set: { status } }));
+		} catch (err) {
+			throw err;
+		}
+	}
 
 	public static async removeTask(_id: ObjectId) {
 		try {

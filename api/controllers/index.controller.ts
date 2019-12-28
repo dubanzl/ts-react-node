@@ -30,6 +30,13 @@ class IndexController {
 	}
 
 
+	public async updateStatusTask(req: Request, res: Response) {
+		const {	_id, status } = req.body;
+		const result = await TaskModel.updateStatusTask(_id, status);
+		res.json(result);
+	}
+
+
 	public async removeTask(req: Request, res: Response) {
 		const {	_id } = req.body;
 		const result = await TaskModel.removeTask(_id);
