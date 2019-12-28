@@ -5,7 +5,7 @@
   justify-content: center;
   height: 100vh;
   background: rgb(251,250,255);
-  background: linear-gradient(180deg, rgba(251,250,255,1) 30%, rgb(32, 32, 223) 30%);
+  background: linear-gradient(180deg, rgba(251,250,255,1) 30%, rgba(32, 32, 223, 0.808) 30%);
 
   .dashboard-brand {
     position: fixed;
@@ -28,6 +28,7 @@
     padding: 0 !important;
 		background-color: #ffffff;
     max-width: 1000px;
+    min-width: 400px;
     min-height: 70%;
     height: calc(100% - 200px);
     border-top: none;
@@ -35,13 +36,58 @@
     border-radius: 7px;
 
     .dashboard-header {
-      height: 50px;
+      padding: 20px;
       width: 100%;
       border-bottom: 2px solid rgba(168, 166, 166, 0.205);
+
+      .task-title {
+        font-size: 20px;
+        font-weight: bold;
+        float: left;
+      }
+
+      .task-counters-info {
+        float: right;
+      }
+
+      p {
+        line-height: 0;
+        padding: 0 7px;
+      }
     }
 
     .dashboard-content {
-      margin: 20px;
+      .task {
+        padding: 20px;
+
+        .task-action-bar {
+          position: absolute;
+          right: 10px;
+        }
+        .task-header {
+          display: flex;
+          flex-direction: row;
+
+          i {
+            margin-top: 7px;
+            margin-right: 7px;
+          }
+        }
+
+        .task-content {
+          margin-top: 17px;
+          margin-left: 10px;
+
+          .task-date {
+            color: #5a575762;
+            font-size: 12px;
+          }
+
+          .tasks-tags {
+            float: right;
+          }
+        }
+      }
     }
   }
 }
