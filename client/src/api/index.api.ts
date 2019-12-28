@@ -1,9 +1,9 @@
 import request from '../utils/request.util';
 
 
-export async function getTasks(): Promise<number[]> {
+export async function query(): Promise<number[]> {
 	return request({
-		url: 'index/getTasks',
+		url: 'index/query',
 		method: 'GET',
 	});
 }

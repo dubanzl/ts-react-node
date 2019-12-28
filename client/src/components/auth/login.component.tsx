@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Icon } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
+import api from '../../api';
 import '../../stylesheet/auth/login.less';
 
 interface Props {
@@ -8,12 +9,27 @@ interface Props {
 }
 
 interface State {
+	email: string;
+	password: string;
 }
 
 class Login extends Component<Props, State> {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			email: '',
+			password: '',
+		};
+	}
+
+
+	async login() {
+		const { email, password } = this.state;
+		console.log(email, password);
+		const login = await api.authApi.login({ email, password });
+		console.log(login);
+
+
 	}
 
 	render(): JSX.Element {
@@ -31,19 +47,21 @@ class Login extends Component<Props, State> {
 							placeholder="Correo Electronico"
 							name="email"
 							type="text"
+							onChange={(event) => this.setState({ email: event.target.value })}
 						/>
 
 						<Form.Input
 							icon
 							type="password"
 							placeholder="Contraseña"
+							onChange={(event) => this.setState({ password: event.target.value })}
 						>
 							<input />
 							<Icon className="password-lock-icon" name="lock" />
 							<Icon className="display-password" name="eye" />
 						</Form.Input>
 
-						<Button color="blue" fluid size="large">
+						<Button color="blue" fluid size="large" onClick={() => this.login()}>
 							INCIAR SESIÓN
 						</Button>
 						<label className="link" onClick={() => { history.push('/registro'); }}> ¿No tienes cuenta? registrate aquí </label>

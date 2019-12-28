@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { getTasks } from '../api/index.api';
 import { Route, Switch } from 'react-router-dom';
 import routes from '../routes';
 
