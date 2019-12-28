@@ -390,36 +390,44 @@
   display: flex !important;
   flex-direction: column !important;
 }
-.login .login-header {
-  height: 90px;
-  background-color: black;
+.login .login-brand {
+  margin-top: 70px;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: center;
+  align-self: center;
+  font-size: 38px;
+  text-align: center;
+  font-weight: bold;
 }
-.login .login-header img {
-  padding-top: 8px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 65px;
+@media only screen and (max-width: 767px) {
+  .login .login-brand {
+    font-size: 28px;
+  }
+}
+.login .login-brand i {
+  margin-left: 12px;
 }
 .login .login-box {
   padding: 0 !important;
   background-color: #ffffff;
-  width: 480px;
+  width: 440px;
   height: auto;
-  box-shadow: 10px 10px 20px rgba(3, 27, 78, 0.1);
+  box-shadow: 4px 10px 20px rgba(3, 27, 78, 0.1);
   margin-left: auto;
   margin-right: auto;
 }
 .login .login-box form {
-  padding: 20px 60px;
+  padding: 10px 60px 20px 60px;
 }
-.login .login-box form .link-redirect {
+.login .login-box form .login-title {
+  font-size: 24px;
+}
+.login .login-box form .link {
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 }
-.login .login-box form .link-redirect:hover {
+.login .login-box form .link:hover {
   color: dimgrey;
 }
 .login .login-box form .password-lock-icon {
@@ -431,7 +439,7 @@
   pointer-events: painted !important;
 }
 .login .login-box form input {
-  height: 55px;
+  height: 50px;
   padding-left: 45px !important;
 }
 .login .login-box form label {
@@ -454,6 +462,110 @@
 }
 @media only screen and (max-width: 767px) {
   .login .login-box {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: unset;
+  }
+}
+.errors {
+  color: #e0b4b4;
+  font-size: 12px;
+}
+.brand {
+  cursor: pointer;
+}
+.brand:hover {
+  opacity: 0.8;
+}
+.error-popup,
+.error-popup::after,
+.error-popup::before {
+  background-color: red !important;
+  color: white !important;
+}
+.register {
+  padding: 0 !important;
+  margin: 0;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.register .register-brand {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: 38px;
+  text-align: center;
+  font-weight: bold;
+}
+@media only screen and (max-width: 767px) {
+  .register .register-brand {
+    font-size: 28px;
+  }
+}
+.register .register-brand i {
+  margin-left: 12px;
+}
+.register .register-box {
+  padding: 0 !important;
+  background-color: #ffffff;
+  width: 440px;
+  height: auto;
+  box-shadow: 4px 10px 20px rgba(3, 27, 78, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+}
+.register .register-box form {
+  padding: 10px 60px 20px 60px;
+}
+.register .register-box form .register-title {
+  font-size: 24px;
+}
+.register .register-box form .link {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.register .register-box form .link:hover {
+  color: dimgrey;
+}
+.register .register-box form .password-lock-icon {
+  position: absolute !important;
+  left: 0;
+}
+.register .register-box form .display-password {
+  cursor: pointer !important;
+  pointer-events: painted !important;
+}
+.register .register-box form input {
+  height: 50px;
+  padding-left: 45px !important;
+}
+.register .register-box form label {
+  text-align: center;
+  color: black;
+  font-size: 14px;
+}
+.register .register-box form button {
+  height: 55px;
+  color: black;
+  width: 200px;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px !important;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.register .register-box form .email-error-container {
+  margin-bottom: 10px !important;
+}
+@media only screen and (max-width: 767px) {
+  .register .register-box {
     width: 100%;
     padding-left: 5px;
     padding-right: 5px;
