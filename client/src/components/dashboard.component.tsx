@@ -12,6 +12,7 @@ interface State {
 	priority: string;
 	expiration_date: string;
 	expiration_time: string;
+	open: boolean;
 }
 
 class Dashboard extends Component<Props, State> {
@@ -24,10 +25,17 @@ class Dashboard extends Component<Props, State> {
 			priority: '',
 			expiration_date: '',
 			expiration_time: '',
+			open: false,
 		};
 	}
 
+	async componentDidMount() {
+		const tasks = await api.tasksApi.getTasksByUserId('5e06bf2299ec426f3a3ef353');
+		console.log(tasks);
+	}
+
 	async addTask() {
+		this.setState({ open: false });
 		const { name, description, priority, expiration_date, expiration_time } = this.state;
 		console.log(name, description, priority, expiration_date, expiration_time);
 		const response = await api.tasksApi.addTask({ name, description, priority, expiration_date, expiration_time, userId: '5e06bf2299ec426f3a3ef353' });
@@ -35,12 +43,19 @@ class Dashboard extends Component<Props, State> {
 	}
 
 	render() {
+		const { open } = this.state;
 		return (
 			<div className="dashboard">
 				<div className="dashboard-box">
 					<p className="dashboard-brand">Task Manager <Icon inverted color="blue" name="tasks" circular /></p>
 					<div className="dashboard-action-bar">
-						<Modal trigger={<Button primary>Añadir tarea</Button>} centered={false} closeIcon>
+						<Modal
+							trigger={
+								<Button onClick={() => this.setState({ open: true })} primary>Añadir tarea</Button>
+							}
+							open={open}
+							centered={false}
+						>
 							<Header icon="archive" content="Archive Old Messages" />
 							<Modal.Content>
 								<Form size="large">
@@ -91,7 +106,7 @@ class Dashboard extends Component<Props, State> {
 								</Form>
 							</Modal.Content>
 							<Modal.Actions>
-								<Button color="red">
+								<Button color="red" onClick={() => this.setState({ open: false })}>
 									<Icon name="remove" /> Cancelar
 								</Button>
 								<Button color="green" onClick={() => this.addTask()}>
