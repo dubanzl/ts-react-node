@@ -12,6 +12,8 @@ class IndexRoutes {
 
 	config(): void{
 		this.router.get('/getTasks', this.IndexController.getTasks);
+		this.router.get('/registerTask', this.IndexController.registerTask);
+
 	}
 }
 

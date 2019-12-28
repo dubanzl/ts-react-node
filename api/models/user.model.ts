@@ -12,16 +12,12 @@ class UserModel {
 	public static async register(user: { email: string, password: string}) {
 		try {
 			return new Promise((resolve: Function): void => {
-				try {
-					db.then((conn) => conn.collection('users').insertOne(user, (err, doc): void => {
-						if (err) {
-							throw err;
-						}
-						resolve(doc.ops[0]);
-					}));
-				} catch (err) {
-					throw err;
-				}
+				db.then((conn) => conn.collection('users').insertOne(user, (err, doc): void => {
+					if (err) {
+						throw err;
+					}
+					resolve(doc.ops[0]);
+				}));
 			});
 		} catch (err) {
 			throw err;
