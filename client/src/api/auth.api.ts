@@ -17,3 +17,12 @@ export async function login(user: { email: string, password: string }): Promise<
 		body: { ...user },
 	});
 }
+
+
+export async function verify(token: string): Promise<object> {
+	return request({
+		url: 'auth/verify',
+		method: 'POST',
+		headers: { Authorization: `bearer ${token}` },
+	});
+}

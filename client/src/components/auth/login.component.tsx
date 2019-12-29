@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import { Form, Button, Icon } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
-import api from '../../api';
+import { connect } from 'react-redux';
+// import api from '../../api';
+import actions from '../../actions';
 import '../../stylesheet/auth/login.less';
 
 interface Props {
 	history: any;
+	login: Function;
+	auth: {
+		message: {
+			type: string,
+			payload: string,
+			description: string,
+			color: string,
+		}
+	};
+	authFailed: Function;
 }
 
 interface State {
@@ -25,11 +37,9 @@ class Login extends Component<Props, State> {
 
 	async login() {
 		const { email, password } = this.state;
-		console.log(email, password);
-		const login = await api.authApi.login({ email, password });
-		console.log(login);
-
-
+		const { login, history } = this.props;
+		const credentials = { email, password };
+		login(credentials, history);
 	}
 
 	render(): JSX.Element {
@@ -58,7 +68,6 @@ class Login extends Component<Props, State> {
 						>
 							<input />
 							<Icon className="password-lock-icon" name="lock" />
-							<Icon className="display-password" name="eye" />
 						</Form.Input>
 
 						<Button color="blue" fluid size="large" onClick={() => this.login()}>
@@ -75,5 +84,12 @@ class Login extends Component<Props, State> {
 	}
 }
 
+const { login, authFailed } = actions.authActions;
 
-export default withRouter((Login) as any);
+function mapStateToProps(state: { loginForm: object, auth: object }): object {
+	return {
+		auth: state.auth,
+	};
+}
+
+export default withRouter(connect(mapStateToProps, { login, authFailed })(Login) as any);

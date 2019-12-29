@@ -36,6 +36,29 @@ class AuthController {
 			throw error;
 		}
 	}
+
+
+	public async verify(req: Request, res: Response) {
+		try {
+			const bearerHeader = req.headers.authorization;
+			if (typeof bearerHeader !== 'undefined') {
+				const bearer = bearerHeader.split(' ');
+				const bearerToken = bearer[1];
+				const token = bearerToken;
+				jwt.verify(token, config.get('jwt'), (err: Error, authData): void => {
+					if (err) {
+						res.sendStatus(403);
+					} else {
+						res.json({ access: true, authData });
+					}
+				});
+			} else {
+				res.sendStatus(403);
+			}
+		} catch (err) {
+			throw err;
+		}
+	}
 }
 
 export default AuthController;

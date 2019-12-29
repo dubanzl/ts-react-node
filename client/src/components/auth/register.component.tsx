@@ -25,11 +25,11 @@ class Register extends Component<Props, State> {
 	}
 
 	async register() {
+		const { history } = this.props;
 		const { email, password, confirmPassword } = this.state;
-		console.log(email, password, confirmPassword);
-
-		const register = await api.authApi.register({ email, password });
-		console.log('register', register);
+		confirmPassword;
+		await api.authApi.register({ email, password });
+		history.push('/iniciar-sesion');
 
 	}
 
@@ -59,7 +59,6 @@ class Register extends Component<Props, State> {
 						>
 							<input />
 							<Icon className="password-lock-icon" name="lock" />
-							<Icon className="display-password" name="eye" />
 						</Form.Input>
 
 						<Form.Input
@@ -70,7 +69,6 @@ class Register extends Component<Props, State> {
 						>
 							<input />
 							<Icon className="password-lock-icon" name="lock" />
-							<Icon className="display-password" name="eye" />
 						</Form.Input>
 
 						<Button color="blue" fluid size="large" onClick={() => this.register()}>

@@ -62,5 +62,8 @@ module.exports = {
     "import/extensions": "off",
     "no-useless-catch": "off",
     "no-nested-ternary": "off",
+    "no-plusplus": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
   }
 };

@@ -3,7 +3,7 @@ import Register from '../components/auth/register.component';
 
 export const authRoutes : any = [
 	{
-		path: '/iniciar-sesion',
+		path: '/(inicio|iniciar-sesion|home||)',
 		exact: true,
 		component: Login,
 	},
