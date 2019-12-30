@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Button, Modal, Header, Form, Label, Dropdown, Responsive, Popup } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import _ from 'lodash';
+import _, { isEmpty } from 'lodash';
 import api from '../api';
 import actions from '../actions';
 import '../stylesheet/dashboard.less';
@@ -153,7 +153,26 @@ class Dashboard extends Component<Props, State> {
 	}
 
 	render() {
-		const { open, tasks, selectedTask, showEditForm } = this.state;
+		const { open, tasks, selectedTask, showEditForm, name,
+			description, priority, expirationDate } = this.state;
+
+		let disabledUpdate = true;
+
+		let disableCreate = true;
+
+		// eslint-disable-next-line max-len
+		if (isEmpty(selectedTask.description) || isEmpty(selectedTask.expirationDate) || isEmpty(selectedTask.name) || isEmpty(selectedTask.priority) || isEmpty(selectedTask.status)) {
+			disabledUpdate = true;
+		} else {
+			disabledUpdate = false;
+		}
+
+		if (isEmpty(name) || isEmpty(description) || isEmpty(priority) || isEmpty(expirationDate)) {
+			disableCreate = true;
+		} else {
+			disableCreate = false;
+		}
+
 		const colors = ['blue', 'red', 'black', 'brown', 'green', 'grey', 'olive', 'orange', 'pink', 'purple', 'teal', 'violet', 'yellow'];
 
 		let background = '#88858517';
@@ -249,7 +268,7 @@ class Dashboard extends Component<Props, State> {
 						<Button color="red" onClick={() => this.resetEditForm()}>
 							<Icon name="remove" /> Cancelar
 						</Button>
-						<Button color="green" onClick={() => this.updateTask()}>
+						<Button disabled={disabledUpdate} color="green" onClick={() => this.updateTask()}>
 							<Icon name="checkmark" /> Aceptar
 						</Button>
 					</Modal.Actions>
@@ -345,8 +364,7 @@ class Dashboard extends Component<Props, State> {
 															: null
 													}
 												</div>
-												<p className="task-date">Fecha de vencimiento: { task.expirationDate } </p>
-
+												<p className="task-date">Fecha de vencimiento: { moment(task.expirationDate).format('YYYY-MM-DD HH:mm') } </p>
 											</div>
 										</div>
 									</div>
@@ -413,7 +431,7 @@ class Dashboard extends Component<Props, State> {
 						<Button color="red" onClick={() => this.setState({ open: false })}>
 							<Icon name="remove" /> Cancelar
 						</Button>
-						<Button color="green" onClick={() => this.addTask()}>
+						<Button color="green" disabled={disableCreate} onClick={() => this.addTask()}>
 							<Icon name="checkmark" /> Aceptar
 						</Button>
 					</Modal.Actions>

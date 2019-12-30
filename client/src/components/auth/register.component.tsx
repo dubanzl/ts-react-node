@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Icon } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 import '../../stylesheet/auth/register.less';
 import api from '../../api';
 
@@ -35,6 +36,16 @@ class Register extends Component<Props, State> {
 
 	render(): JSX.Element {
 		const { history } = this.props;
+		const { email, password, confirmPassword } = this.state;
+
+		let disable = true;
+
+		if (isEmpty(email) || isEmpty(password) || isEmpty(confirmPassword)) {
+			disable = true;
+		} else {
+			disable = false;
+		}
+
 
 		return (
 			<div className="register">
@@ -71,7 +82,7 @@ class Register extends Component<Props, State> {
 							<Icon className="password-lock-icon" name="lock" />
 						</Form.Input>
 
-						<Button color="blue" fluid size="large" onClick={() => this.register()}>
+						<Button color="blue" disabled={disable} fluid size="large" onClick={() => this.register()}>
 							REGISTRARSE
 						</Button>
 						<label className="link" onClick={() => { history.push('/iniciar-sesion'); }}> ¿Ya tienes cuenta? inicia sesión aquí</label>

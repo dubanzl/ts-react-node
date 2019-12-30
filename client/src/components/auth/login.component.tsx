@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Icon } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import api from '../../api';
+import { isEmpty } from 'lodash';
 import actions from '../../actions';
 import '../../stylesheet/auth/login.less';
 
@@ -44,6 +44,15 @@ class Login extends Component<Props, State> {
 
 	render(): JSX.Element {
 		const { history } = this.props;
+		const { email, password } = this.state;
+
+		let disable = true;
+
+		if (isEmpty(email) || isEmpty(password)) {
+			disable = true;
+		} else {
+			disable = false;
+		}
 
 		return (
 			<div className="login">
@@ -69,8 +78,7 @@ class Login extends Component<Props, State> {
 							<input />
 							<Icon className="password-lock-icon" name="lock" />
 						</Form.Input>
-
-						<Button color="blue" fluid size="large" onClick={() => this.login()}>
+						<Button color="blue" disabled={disable} fluid size="large" onClick={() => this.login()}>
 							INCIAR SESIÓN
 						</Button>
 						<label className="link" onClick={() => { history.push('/registro'); }}> ¿No tienes cuenta? registrate aquí </label>
